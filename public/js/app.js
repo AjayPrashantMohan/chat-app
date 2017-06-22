@@ -12,7 +12,7 @@ socket.on('connect', function() {
 	});
 });
 
-socket.on('message', function(message) {
+socket.on('message', function(message) {//message event
 	var momentTimeStamp = moment.utc(message.timestamp);
 	var $messages = $('.messages');
 	var $message = $('<li class="list-group-item"></li>');
