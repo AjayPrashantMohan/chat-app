@@ -81,7 +81,8 @@ io.on('connection', function(socket) {
 	});
 
 	socket.on('sendMail', function(mailDetails) {
-			emailer.mailer("ajayprashantmohan@gmail.com",mailDetails.mailContent);
+			console.log(mailDetails.mailId);
+			emailer.mailer(mailDetails.mailId,mailDetails.mailContent);
 	});
 
 

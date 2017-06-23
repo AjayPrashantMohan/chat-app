@@ -2,7 +2,7 @@ var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 
 
-function mailer(email,message) {
+function mailer(emailId,message) {
     var transport = nodemailer.createTransport(smtpTransport({
         service: 'gmail',
         auth: {
@@ -13,7 +13,7 @@ function mailer(email,message) {
 
     var mail = {
         from: '<volatile.chats@gmail.com>', // sender address
-        to: email, // list of receivers
+        to: emailId, // list of receivers
         subject: 'Your chat conversation', // Subject line
         text: message // plain text body
     };
