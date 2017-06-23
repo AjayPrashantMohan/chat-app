@@ -4,6 +4,7 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var emailer = require('./email-engine');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -78,6 +79,12 @@ io.on('connection', function(socket) {
 		text: 'Welcome to the chat application!',
 		timestamp: moment().valueOf()
 	});
+
+	socket.on('sendMail', function(mailDetails) {
+			emailer.mailer("ajayprashantmohan@gmail.com",mailDetails.mailContent);
+	});
+
+
 });
 
 http.listen(PORT, function() {

@@ -17,6 +17,7 @@
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 well">
 						<a href="/index.html">Logout</a>
+						<a id='email-conversation'>e-mail conversation</a>
 						<h1 class="room-title text-center"></h1>
 						<ul class="messages list-group">
 							<!-- Messages in here-->
@@ -45,5 +46,18 @@
 		<script src="/js/moment.js"></script>
 		<script src="/js/QueryParams.js"></script>
 		<script src="/js/app.js"></script>
+		<script type="text/javascript">
+			$('#email-conversation').on('click',function(){
+					  	var arr = $('.messages').children();
+					    var finalString = "";
+					    for(i=0 ;i<arr.length;i++){
+					      finalString += $(arr[i])[0].innerText;
+					    }
+
+						socket.emit('sendMail', {
+							mailContent: finalString
+						});
+			});
+		</script>
 	</body>
 </html>
